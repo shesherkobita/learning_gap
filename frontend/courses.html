@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Courses · Learning Gap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body class="dashboard-page" data-role="student">
+  <div class="app-shell">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">L</span>
+        <span>learning<span class="brand-accent">gap</span></span>
+      </a>
+
+      <nav aria-label="Primary">
+        <div class="side-label">LEARNING SPACE</div>
+        <a class="nav-item" href="/student/dashboard">
+          <span aria-hidden="true">⌂</span>Overview
+        </a>
+        <a class="nav-item active" href="/student/courses" aria-current="page">
+          <span aria-hidden="true">▤</span>My courses
+        </a>
+        <a class="nav-item" href="/student/learning-gaps">
+          <span aria-hidden="true">◉</span>Learning gaps
+        </a>
+        <a class="nav-item" href="/student/learning-plan">
+          <span aria-hidden="true">✳</span>Learning plan
+        </a>
+        <a class="nav-item" href="/student/quizzes">
+          <span aria-hidden="true">✎</span>Quizzes
+        </a>
+      </nav>
+
+      <div class="side-bottom">
+        <div class="help-card">
+          <span class="help-icon" aria-hidden="true">✦</span>
+          <strong>Keep your momentum</strong>
+          <p>Your learning journey grows with every practice.</p>
+        </div>
+
+        <div class="profile-button">
+          <span class="avatar" id="avatar" aria-hidden="true">S</span>
+          <span class="profile-text">
+            <b id="side-name">Student</b>
+            <small id="side-subtitle">Learner</small>
+          </span>
+        </div>
+
+        <button type="button" class="logout-link" data-logout>
+          <span aria-hidden="true">↪</span> &nbsp; Sign out
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-area">
+      <header class="topbar">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          Learning space <span aria-hidden="true">/</span> My courses
+        </nav>
+        <div class="top-actions">
+          <button type="button" class="icon-button" aria-label="Notifications">
+            <span aria-hidden="true">♧</span><i></i>
+          </button>
+          <div class="mini-avatar" id="top-avatar" aria-hidden="true">S</div>
+        </div>
+      </header>
+
+      <section class="content courses-content">
+        <div class="welcome-row">
+          <div>
+            <span class="eyebrow">YOUR LEARNING SPACE</span>
+            <h1>Courses that move you forward.</h1>
+            <p id="course-subtitle">Browse available courses or continue learning.</p>
+          </div>
+          <button type="button" class="button primary request-open" id="request-open">
+            Request a course <span aria-hidden="true">＋</span>
+          </button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="course-tabs" role="tablist" aria-label="Course views">
+          <button type="button" class="course-tab active" role="tab" aria-selected="true" aria-controls="enrolled-section" data-tab="enrolled">
+            My courses <span id="count-enrolled">0</span>
+          </button>
+          <button type="button" class="course-tab" role="tab" aria-selected="false" aria-controls="available-section" data-tab="available">
+            Explore courses <span id="count-available">0</span>
+          </button>
+          <button type="button" class="course-tab" role="tab" aria-selected="false" aria-controls="requests-section" data-tab="requests">
+            My requests <span id="count-requests">0</span>
+          </button>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="course-toolbar">
+          <div class="course-search">
+            <span aria-hidden="true">⌕</span>
+            <input type="search" id="course-search" aria-label="Search courses, teachers, or subjects" placeholder="Search courses, teachers, or subjects">
+          </div>
+          <select id="department-filter" aria-label="Filter by department">
+            <option value="">All departments</option>
+          </select>
+          <select id="teacher-filter" aria-label="Filter by teacher">
+            <option value="">All teachers</option>
+          </select>
+        </div>
+
+        <!-- Tab Panels -->
+        <section class="course-section" id="enrolled-section" role="tabpanel">
+          <div class="course-grid" id="enrolled-grid" aria-live="polite">
+            <div class="loading-line">Loading your courses…</div>
+          </div>
+        </section>
+
+        <section class="course-section hidden" id="available-section" role="tabpanel">
+          <div class="course-grid" id="available-grid" aria-live="polite">
+            <div class="loading-line">Loading available courses…</div>
+          </div>
+        </section>
+
+        <section class="course-section hidden" id="requests-section" role="tabpanel">
+          <div class="request-list" id="request-list" aria-live="polite">
+            <div class="loading-line">Loading requests…</div>
+          </div>
+        </section>
+
+        <footer class="page-footer">
+          Learning Gap <span aria-hidden="true">·</span> Learn with clarity
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <!-- Request a Course Modal -->
+  <dialog id="request-dialog" class="course-dialog" aria-labelledby="request-dialog-title">
+    <form id="request-form">
+      <div class="dialog-heading">
+        <div>
+          <span class="eyebrow">COURSE IDEA</span>
+          <h2 id="request-dialog-title">Request a course</h2>
+          <p>Tell your teachers what you’d like to learn.</p>
+        </div>
+        <button type="button" class="dialog-close" data-close="
