@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assessments · Learning Gap</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+
+<body class="dashboard-page teacher-portal" data-role="teacher" data-page="assessments">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/teacher/dashboard"><span class="brand-mark">L</span><span>learning<span
+            class="brand-accent">gap</span></span></a>
+      <div class="side-label">TEACHING SPACE</div>
+      <a class="nav-item " href="/teacher/dashboard"><span>⌂</span>Dashboard</a>
+      <a class="nav-item " href="/teacher/classes"><span>▦</span>Classes</a>
+      <a class="nav-item active" href="/teacher/assessments"><span>▤</span>Assessments</a>
+      <a class="nav-item " href="/teacher/gradebook"><span>▥</span>Gradebook & Students</a>
+      <a class="nav-item " href="/teacher/reports"><span>◉</span>Reports</a>
+      <div class="side-bottom">
+        <div class="help-card"><span class="help-icon">✦</span><strong>Teach with insight</strong>
+          <p>Use learner progress to plan your next step.</p>
+        </div>
+        <div class="profile-button"><span class="avatar" id="avatar">T</span><span class="profile-text"><b
+              id="side-name">Teacher</b><small id="side-subtitle">Educator</small></span></div>
+        <button class="logout-link" data-logout>↪ &nbsp; Sign out</button>
+      </div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumb">Teaching space <span>/</span> Assessments</div>
+        <div class="top-actions">
+          <div class="mini-avatar" id="top-avatar">T</div>
+        </div>
+      </header>
+      <section class="content teacher-content">
+        <div class="welcome-row">
+          <div><span class="eyebrow">ASSESSMENT MANAGEMENT</span>
+            <h1>Assessments</h1>
+            <p>Create quizzes and assignments, set due dates, and review submissions.</p>
+          </div><button class="button primary" id="new-assessment">＋ Create assessment</button>
+        </div>
+        <div class="stats-grid teacher-stats">
+          <article class="stat-card">
+            <div class="stat-top"><span>Scheduled</span><span class="stat-icon lilac">◷</span></div><strong
+              id="a-scheduled">—</strong><small>Published assessments</small>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top"><span>Submissions</span><span class="stat-icon green">▤</span></div><strong
+              id="a-submissions">—</strong><small>Received so far</small>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top"><span>Pending grading</span><span class="stat-icon peach">⌛</span></div><strong
+              id="a-pending">—</strong><small>Need your review</small>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top"><span>Drafts</span><span class="stat-icon blue">✎</span></div><strong
+              id="a-drafts">—</strong><small>Not published yet</small>
+          </article>
+        </div>
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <h3>Assessment list</h3>
+              <p>Drafts and published work across your classes</p>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>ASSESSMENT</th>
+                  <th>CLASS</th>
+                  <th>TYPE</th>
+                  <th>DUE</th>
+                  <th>SUBMISSIONS</th>
+                  <th>STATUS</th>
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody id="assessment-rows">
+                <tr>
+                  <td colspan="7" class="loading-line">Loading assessments…</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <dialog id="assessment-dialog" class="course-dialog teacher-dialog wide-dialog">
+          <form id="assessment-form">
+            <div class="dialog-heading">
+              <div><span class="eyebrow">ASSESSMENT BUILDER</span>
+                <h2>Create an assessment</h2>
+              </div><button type="button" class="dialog-close" data-close="assessment-dialog">×</button>
+            </div><label>Class<select name="course_id" id="assessment-course" required></select></label>
+            <div class="dialog-two"><label>Title<input name="title" required></label><label>Type<select name="kind">
+                  <option value="quiz">Quiz (auto-grade)</option>
+                  <option value="assignment">Assignment (manual grading)</option>
+                </select></label></div>
+            <div class="dialog-two"><label>Due date<input name="due_at" type="datetime-local"></label><label>Total
+                points<input name="total_points" type="number" min="1" value="100" required></label></div>
+            <label>Description<textarea name="description" rows="2"></textarea></label><label>Custom rubric / grading
+              notes<textarea name="rubric" rows="2"
+                placeholder="How will written work be evaluated?"></textarea></label>
+            <div class="question-builder-head"><b>Questions</b><button class="button outline" id="add-question"
+                type="button">＋ Add question</button></div>
+            <div id="question-builder"></div>
+            <div class="form-message" id="assessment-message" role="alert"></div><button
+              class="button primary full">Save as draft</button>
+          </form>
+        </dialog>
+        <dialog id="submission-dialog" class="course-dialog teacher-dialog">
+          <div class="dialog-heading">
+            <div><span class="eyebrow">STUDENT WORK</span>
+              <h2 id="submission-title">Submissions</h2>
+            </div><button type="button" class="dialog-close" data-close="submission-dialog">×</button>
+          </div>
+          <div id="submission-list"></div>
+        </dialog>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="/assets/js/teacher-portal.js"></script>
+</body>
+
+</html>

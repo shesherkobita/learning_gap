@@ -1,22 +1,26 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Learning Gap — Learn with clarity</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/app.css">
 </head>
+
 <body class="auth-page">
   <main class="auth-layout">
-    <!-- Left Promotional / Story Section -->
-    <section class="auth-story">
+    <section class="auth-story" aria-label="About Learning Gap">
       <a class="brand" href="/">
         <span class="brand-mark" aria-hidden="true">L</span>
         <span>learning<span class="brand-accent">gap</span></span>
       </a>
+
       <div class="story-copy">
         <span class="eyebrow light">A clearer way forward</span>
         <h1>Learn what you<br>need, <em>when you need it.</em></h1>
@@ -28,6 +32,117 @@
           <span>Personal progress, made visible</span>
         </div>
       </div>
+
       <div class="story-bottom" aria-hidden="true">
         <span>Small steps. Strong foundations.</span>
-        <span>01 / 0
+        <span>01 / 03</span>
+      </div>
+    </section>
+
+    <section class="auth-main" aria-labelledby="form-title">
+      <div class="auth-wrap">
+        <a class="mobile-brand brand" href="/">
+          <span class="brand-mark" aria-hidden="true">L</span>
+          <span>learning<span class="brand-accent">gap</span></span>
+        </a>
+
+        <div class="auth-heading">
+          <span class="eyebrow" id="form-eyebrow">WELCOME BACK</span>
+          <h2 id="form-title">Good to see you.</h2>
+          <p id="form-subtitle">Sign in to continue your learning journey.</p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Account access">
+          <button class="tab active" type="button" role="tab" aria-selected="true" data-mode="login">Sign in</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-mode="register">Create
+            account</button>
+        </div>
+
+        <form id="auth-form" novalidate>
+          <div class="field role-field hidden" id="role-field">
+            <label>I am joining as</label>
+            <div class="role-options">
+              <label class="role-choice">
+                <input type="radio" name="role" value="student" checked>
+                <span>Student</span>
+              </label>
+              <label class="role-choice">
+                <input type="radio" name="role" value="teacher">
+                <span>Teacher</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field hidden" id="name-field">
+            <label for="full-name">Full name</label>
+            <input id="full-name" name="full_name" autocomplete="name" placeholder="e.g. Ayesha Rahman">
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@school.edu" required>
+          </div>
+
+          <div class="field">
+            <div class="label-row">
+              <label for="password">Password</label>
+              <a href="#" class="text-link" id="forgot-link">Forgot password?</a>
+            </div>
+            <div class="password-wrap">
+              <input id="password" name="password" type="password" autocomplete="current-password"
+                placeholder="Enter your password" required>
+              <button class="show-password" type="button" aria-label="Show password">Show</button>
+            </div>
+            <div id="strength" class="strength hidden" aria-live="polite">
+              <span></span><span></span><span></span><span></span>
+              <small>Use 8 or more characters</small>
+            </div>
+          </div>
+
+          <div class="field hidden" id="confirm-field">
+            <label for="confirm-password">Confirm password</label>
+            <input id="confirm-password" type="password" autocomplete="new-password"
+              placeholder="Enter your password again">
+          </div>
+
+          <div class="field hidden" id="class-field">
+            <label for="class-name">Class / grade</label>
+            <input id="class-name" placeholder="e.g. Class 8">
+          </div>
+
+          <div class="field hidden" id="teacher-field">
+            <label for="teacher-id">Choose your teacher</label>
+            <select id="teacher-id">
+              <option value="">Loading teachers…</option>
+            </select>
+            <small class="field-hint" id="teacher-hint"></small>
+          </div>
+
+          <div class="field hidden" id="department-field">
+            <label for="department">Department</label>
+            <input id="department" placeholder="e.g. Mathematics">
+          </div>
+
+          <div class="inline-row" id="remember-row">
+            <label class="check">
+              <input type="checkbox" id="remember-me">
+              <span>Remember me</span>
+            </label>
+          </div>
+
+          <div class="form-message" id="form-message" role="alert"></div>
+          <button class="button primary full" id="submit-button" type="submit">
+            <span>Sign in</span><b aria-hidden="true">→</b>
+          </button>
+        </form>
+
+        <p class="legal-note">
+          By continuing, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+  <script src="/assets/js/auth.js"></script>
+</body>
+
+</html>

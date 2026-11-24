@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gradebook & Students · Learning Gap</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+
+<body class="dashboard-page teacher-portal" data-role="teacher" data-page="gradebook">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/teacher/dashboard"><span class="brand-mark">L</span><span>learning<span
+            class="brand-accent">gap</span></span></a>
+      <div class="side-label">TEACHING SPACE</div>
+      <a class="nav-item " href="/teacher/dashboard"><span>⌂</span>Dashboard</a>
+      <a class="nav-item " href="/teacher/classes"><span>▦</span>Classes</a>
+      <a class="nav-item " href="/teacher/assessments"><span>▤</span>Assessments</a>
+      <a class="nav-item active" href="/teacher/gradebook"><span>▥</span>Gradebook & Students</a>
+      <a class="nav-item " href="/teacher/reports"><span>◉</span>Reports</a>
+      <div class="side-bottom">
+        <div class="help-card"><span class="help-icon">✦</span><strong>Teach with insight</strong>
+          <p>Use learner progress to plan your next step.</p>
+        </div>
+        <div class="profile-button"><span class="avatar" id="avatar">T</span><span class="profile-text"><b
+              id="side-name">Teacher</b><small id="side-subtitle">Educator</small></span></div>
+        <button class="logout-link" data-logout>↪ &nbsp; Sign out</button>
+      </div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumb">Teaching space <span>/</span> Gradebook & Students</div>
+        <div class="top-actions">
+          <div class="mini-avatar" id="top-avatar">T</div>
+        </div>
+      </header>
+      <section class="content teacher-content">
+        <div class="welcome-row">
+          <div><span class="eyebrow">STUDENT RECORDS</span>
+            <h1>Gradebook & Students</h1>
+            <p>Review submissions and manage weighted scores for each class.</p>
+          </div>
+        </div>
+        <section class="panel gradebook-tools"><label for="gradebook-course">Class</label><select
+            id="gradebook-course"></select><button class="button outline" id="weight-editor">Set category
+            weights</button><button class="button primary" id="add-grade">＋ Add grade</button></section>
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <h3>Student score matrix</h3>
+              <p>Weighted overall score is calculated from category weights</p>
+            </div><span id="gradebook-count" class="roster-count">— students</span>
+          </div>
+          <div class="table-scroll">
+            <table class="gradebook-table">
+              <thead id="gradebook-head"></thead>
+              <tbody id="gradebook-body">
+                <tr>
+                  <td class="loading-line">Loading gradebook…</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <dialog id="grade-dialog" class="course-dialog teacher-dialog">
+          <form id="grade-form">
+            <div class="dialog-heading">
+              <div><span class="eyebrow">GRADE ENTRY</span>
+                <h2>Add or update a score</h2>
+              </div><button type="button" class="dialog-close" data-close="grade-dialog">×</button>
+            </div><label>Student<select name="student_id" id="grade-student" required></select></label>
+            <div class="dialog-two"><label>Category<input name="category" placeholder="Quiz, Assignment"
+                  required></label><label>Item name<input name="item_name" required></label></div>
+            <div class="dialog-two"><label>Score<input name="score" type="number" min="0" step="0.01"
+                  required></label><label>Out of<input name="max_score" type="number" min="0.01" step="0.01" value="100"
+                  required></label></div>
+            <div class="form-message" id="grade-message" role="alert"></div><button class="button primary full">Save
+              score</button>
+          </form>
+        </dialog>
+        <dialog id="weight-dialog" class="course-dialog teacher-dialog">
+          <form id="weight-form">
+            <div class="dialog-heading">
+              <div><span class="eyebrow">WEIGHTED GRADES</span>
+                <h2>Category weights</h2>
+              </div><button type="button" class="dialog-close" data-close="weight-dialog">×</button>
+            </div>
+            <p class="muted-copy">Weights must add up to 100%.</p>
+            <div id="weight-rows"></div><button type="button" class="button outline" id="add-weight-row">＋ Add
+              category</button>
+            <div class="form-message" id="weight-message" role="alert"></div><button class="button primary full">Save
+              weights</button>
+          </form>
+        </dialog>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="/assets/js/teacher-portal.js"></script>
+</body>
+
+</html>

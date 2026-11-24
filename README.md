@@ -9,6 +9,12 @@ Learning Gap is a student learning app that uses assessment and quiz answers to 
 - **Learning Gaps:** view topic accuracy, severity, actual incorrect answers, and known misconception patterns based on recorded data.
 - **Learning Plan:** follow curated lessons prioritized using topic performance and save lesson completion.
 - **Quizzes:** take topic-focused or mixed quizzes, submit answers, review feedback, and save results that update Learning Gaps and the Learning Plan.
+- **Teacher Dashboard:** see published classes, student totals, pending grading, students below the at-risk score threshold, and upcoming assessment deadlines.
+- **Classes:** create and publish class sections, maintain a syllabus, link study materials, post announcements, and view enrolled students.
+- **Assessments:** create quizzes or assignments with questions, rubrics, due dates, and points; quizzes with answer keys are auto-graded, while written work can be graded by the teacher.
+- **Gradebook & Students:** review enrolled students and scores, add grade entries, set category weights that total 100%, and view a weighted class matrix.
+- **Reports:** filter monthly score trends by class, review Learning Gap alerts, and download a CSV report.
+- **Student Assessments:** students can open and submit published assessments from classes they are enrolled in.
 
 ## Technology
 
@@ -52,7 +58,7 @@ For macOS or Linux, create and activate a virtual environment with `python3 -m v
 app/                 FastAPI application
   core/              Settings and security helpers
   db/                PostgreSQL connection/session
-  routers/           Authentication, dashboard, courses, learning APIs
+  routers/           Authentication, dashboard, courses, learning, and teacher APIs
   schemas/           API input validation
 alembic/             Database migration history
 database/            Starting schema and sample data
@@ -70,7 +76,7 @@ See [docs/PROJECT_GUIDE.md](docs/PROJECT_GUIDE.md) for descriptions of the main 
 
 Learning gap scores are calculated from stored assessment and quiz answers. New student accounts will show no topic scores until they have answer data. The guided lesson content is curated starter material, not AI-generated content. The supplied database file contains development sample records.
 
-Resources, full course lesson authoring, teacher course management, standalone assessment creation, and teacher review of course requests are not implemented in this milestone.
+Teacher materials are stored as resource links; direct file uploads are not included. The teacher gradebook can also store manual grade entries independently of assessment submissions. Course requests remain part of the student course workflow.
 
 ## GitHub and secrets
 

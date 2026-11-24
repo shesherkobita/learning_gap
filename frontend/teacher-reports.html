@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reports · Learning Gap</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+
+<body class="dashboard-page teacher-portal" data-role="teacher" data-page="reports">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/teacher/dashboard"><span class="brand-mark">L</span><span>learning<span
+            class="brand-accent">gap</span></span></a>
+      <div class="side-label">TEACHING SPACE</div>
+      <a class="nav-item " href="/teacher/dashboard"><span>⌂</span>Dashboard</a>
+      <a class="nav-item " href="/teacher/classes"><span>▦</span>Classes</a>
+      <a class="nav-item " href="/teacher/assessments"><span>▤</span>Assessments</a>
+      <a class="nav-item " href="/teacher/gradebook"><span>▥</span>Gradebook & Students</a>
+      <a class="nav-item active" href="/teacher/reports"><span>◉</span>Reports</a>
+      <div class="side-bottom">
+        <div class="help-card"><span class="help-icon">✦</span><strong>Teach with insight</strong>
+          <p>Use learner progress to plan your next step.</p>
+        </div>
+        <div class="profile-button"><span class="avatar" id="avatar">T</span><span class="profile-text"><b
+              id="side-name">Teacher</b><small id="side-subtitle">Educator</small></span></div>
+        <button class="logout-link" data-logout>↪ &nbsp; Sign out</button>
+      </div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumb">Teaching space <span>/</span> Reports</div>
+        <div class="top-actions">
+          <div class="mini-avatar" id="top-avatar">T</div>
+        </div>
+      </header>
+      <section class="content teacher-content">
+        <div class="welcome-row">
+          <div><span class="eyebrow">LEARNING ANALYTICS</span>
+            <h1>Reports</h1>
+            <p>Review grade trends and identify students who may need support.</p>
+          </div><button class="button outline" id="download-report">Download CSV</button>
+        </div>
+        <section class="panel report-toolbar"><label for="report-course">Class</label><select id="report-course">
+            <option value="">All classes</option>
+          </select><button class="button primary" id="refresh-report">Update report</button></section>
+        <div class="report-grid">
+          <section class="panel report-chart-panel">
+            <div class="panel-heading">
+              <div>
+                <h3>Grade trends</h3>
+                <p>Average recorded score by month</p>
+              </div>
+            </div><canvas id="grade-trend-chart" height="130"></canvas>
+            <div id="trend-empty" class="empty-note hidden">No scored results have been recorded for this period.</div>
+          </section>
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <h3>Learning Gap Alerts</h3>
+                <p>Students averaging below 50% on recorded work</p>
+              </div><span class="alert-count" id="report-risk-count">0</span>
+            </div>
+            <div id="report-risk-list" class="teacher-list">
+              <div class="loading-line">Loading alerts…</div>
+            </div>
+          </section>
+        </div>
+        <section class="panel report-note"><b>How to read this report</b>
+          <p>Trends and alerts use saved assessment, quiz, and graded assignment results. Students with no recorded
+            scores are not classified as at risk.</p>
+        </section>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/assets/js/teacher-portal.js"></script>
+</body>
+
+</html>

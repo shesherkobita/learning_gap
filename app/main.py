@@ -8,6 +8,7 @@ from app.routers.auth import router as auth_router
 from app.routers.dashboard import router as dashboard_router
 from app.routers.courses import router as courses_router
 from app.routers.learning import router as personal_learning_router
+from app.routers.teacher import router as teacher_portal_router
 
 BASE = Path(__file__).resolve().parent.parent
 app = FastAPI(title="Learning Gap", version="0.1.0")
@@ -16,6 +17,7 @@ app.include_router(auth_router)
 app.include_router(dashboard_router)
 app.include_router(courses_router)
 app.include_router(personal_learning_router)
+app.include_router(teacher_portal_router)
 app.mount("/assets", StaticFiles(directory=BASE / "frontend" / "assets"), name="assets")
 
 @app.get("/health")
@@ -37,6 +39,21 @@ def student_plan_page(): return FileResponse(BASE / "frontend" / "learning-plan.
 
 @app.get("/student/quizzes")
 def student_quizzes_page(): return FileResponse(BASE / "frontend" / "quizzes.html")
+
+@app.get("/student/assessments")
+def student_assessments_page(): return FileResponse(BASE / "frontend" / "student-assessments.html")
+
+@app.get("/teacher/classes")
+def teacher_classes_page(): return FileResponse(BASE / "frontend" / "teacher-classes.html")
+
+@app.get("/teacher/assessments")
+def teacher_assessments_page(): return FileResponse(BASE / "frontend" / "teacher-assessments.html")
+
+@app.get("/teacher/gradebook")
+def teacher_gradebook_page(): return FileResponse(BASE / "frontend" / "teacher-gradebook.html")
+
+@app.get("/teacher/reports")
+def teacher_reports_page(): return FileResponse(BASE / "frontend" / "teacher-reports.html")
 
 @app.get("/{path:path}")
 def frontend(path: str): return FileResponse(BASE / "frontend" / "index.html")
